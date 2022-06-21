@@ -1,13 +1,15 @@
 import { View, Text, StyleSheet, Image } from "react-native";
-import React from "react";
 
-export default function Card({ item }) {
-  const source =
-    item.source ||
-    "https://merriam-webster.com/assets/mw/images/article/art-wap-landing-mp-lg/gray-background-7131-96d780fd18d4eaf58a7331d45573204e@1x.jpg";
+const defaultImage =
+  "https://merriam-webster.com/assets/mw/images/article/art-wap-landing-mp-lg/gray-background-7131-96d780fd18d4eaf58a7331d45573204e@1x.jpg";
+
+export default function Card({ item, selection }) {
+  const source = item.source || defaultImage;
+
+  const isSelected = selection.includes(item);
 
   return (
-    <View style={style.container}>
+    <View style={[style.container, isSelected && style.selected]}>
       <View style={style.imageContainer}>
         <Image source={{ uri: source }} style={style.image} />
       </View>
@@ -32,21 +34,27 @@ const style = StyleSheet.create({
     borderRadius: 4,
     marginBottom: 24,
     borderWidth: 1,
-    borderColor: "rgba(0,0,0,0.2)",
+    borderStyle: "dashed",
+    borderColor: "rgba(0,0,0,0.3)",
   },
 
+  selected: {
+    backgroundColor: "rgba(235,87,86,0.1)",
+    borderWidth: 1,
+    borderStyle: "solid",
+    borderColor: "#eb5756",
+  },
   imageContainer: {
     width: "100%",
     height: 200,
   },
-
   image: {
     width: "100%",
     height: "100%",
   },
   body: {
     flexDirection: "row",
-    padding: 8,
+    padding: 12,
     justifyContent: "space-between",
   },
   name: {
@@ -67,7 +75,6 @@ const style = StyleSheet.create({
     backgroundColor: "#eb5756",
     borderRadius: 88,
   },
-
   discountText: {
     color: "white",
     fontSize: 18,
