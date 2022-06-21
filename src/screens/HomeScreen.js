@@ -1,15 +1,15 @@
 import {
-  View,
   FlatList,
   Text,
   StyleSheet,
   TouchableOpacity,
+  SafeAreaView,
 } from "react-native";
 
 import SearchInput from "../components/SearchInput";
 import Card from "../components/Card";
 import { coupons } from "../data/coupons";
-import { useCouponsContext } from "../providers/CouponsProviders";
+import { useCouponsContext } from "../providers/CouponsProvider";
 import { useState } from "react";
 
 export default function HomeScreen() {
@@ -23,7 +23,7 @@ export default function HomeScreen() {
   });
 
   return (
-    <View style={styles.main}>
+    <SafeAreaView style={styles.main}>
       <Text style={styles.title}>Coupons</Text>
       <SearchInput search={search} setSearch={setSearch} />
 
@@ -32,19 +32,23 @@ export default function HomeScreen() {
         data={filteredCoupons}
         renderItem={({ item }) => {
           return (
-            <TouchableOpacity onPress={() => handleRedeemIt(item)}>
+            <TouchableOpacity
+              onPress={() => handleRedeemIt(item)}
+              delayPressIn={100}
+            >
               <Card item={item} selection={redeemed} />
             </TouchableOpacity>
           );
         }}
       />
-    </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   main: {
     flex: 1,
+    // marginTop: 16,
   },
   title: {
     padding: 12,

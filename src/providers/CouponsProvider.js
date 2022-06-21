@@ -3,7 +3,7 @@ import { createContext, useContext, useState } from "react";
 const defaultValues = { redeemed: [], handleRedeemIt: () => {} };
 const Context = createContext(defaultValues);
 
-export default function CouponsProviders({ children }) {
+export default function CouponsProvider({ children }) {
   const [redeemed, setRedeemed] = useState([]);
 
   const handleRedeemIt = (item) => {

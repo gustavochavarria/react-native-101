@@ -1,22 +1,13 @@
-import {
-  View,
-  FlatList,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-} from "react-native";
+import { SafeAreaView, FlatList, Text, StyleSheet } from "react-native";
 
 import Card from "../components/Card";
-import { coupons } from "../data/coupons";
-import { useCouponsContext } from "../providers/CouponsProviders";
+import { useCouponsContext } from "../providers/CouponsProvider";
 
 export default function HistoryScreen() {
-  const { redeemed, handleRedeemIt } = useCouponsContext();
-
-  console.log({ redeemed });
+  const { redeemed } = useCouponsContext();
 
   return (
-    <View style={styles.main}>
+    <SafeAreaView style={styles.main}>
       <Text style={styles.title}>History</Text>
 
       <FlatList
@@ -26,13 +17,14 @@ export default function HistoryScreen() {
           return <Card item={item} selection={redeemed} />;
         }}
       />
-    </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   main: {
     flex: 1,
+    marginTop: 16,
   },
   title: {
     padding: 12,

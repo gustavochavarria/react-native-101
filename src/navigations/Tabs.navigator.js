@@ -12,6 +12,7 @@ export default function TabsNavigator() {
     <Tabs.Navigator
       screenOptions={{
         tabBarActiveTintColor: "#eb5756",
+        headerShown: false,
       }}
     >
       <Tabs.Screen
