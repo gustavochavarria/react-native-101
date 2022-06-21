@@ -10,20 +10,26 @@ import SearchInput from "../components/SearchInput";
 import Card from "../components/Card";
 import { coupons } from "../data/coupons";
 import { useCouponsContext } from "../providers/CouponsProviders";
+import { useState } from "react";
 
 export default function HomeScreen() {
   const { redeemed, handleRedeemIt } = useCouponsContext();
+  const [search, setSearch] = useState("");
 
-  console.log({ redeemed, handleRedeemIt });
+  const filteredCoupons = coupons.filter((coupon) => {
+    const seek = String(coupon.name).toLowerCase();
+
+    return seek.includes(search);
+  });
 
   return (
     <View style={styles.main}>
       <Text style={styles.title}>Coupons</Text>
-      <SearchInput />
+      <SearchInput search={search} setSearch={setSearch} />
 
       <FlatList
         style={styles.list}
-        data={coupons}
+        data={filteredCoupons}
         renderItem={({ item }) => {
           return (
             <TouchableOpacity onPress={() => handleRedeemIt(item)}>

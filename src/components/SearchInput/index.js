@@ -1,9 +1,18 @@
 import { View, StyleSheet, TextInput } from "react-native";
 
-export default function SearchInput() {
+export default function SearchInput(props) {
+  const { search, setSearch } = props;
+
   return (
     <View style={styles.container}>
-      <TextInput style={styles.input} placeholder="Search coupon" />
+      <TextInput
+        style={styles.input}
+        placeholder="Search coupon"
+        value={search}
+        onChangeText={(value) => {
+          setSearch(String(value).trim().toLowerCase());
+        }}
+      />
     </View>
   );
 }
