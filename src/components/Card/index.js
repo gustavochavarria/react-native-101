@@ -20,7 +20,7 @@ export default function Card({ item, selection }) {
         </View>
 
         <View style={style.discount}>
-          <Text style={style.discountText}>{item.discount} %</Text>
+          <Text style={style.discountText}>{item.discount}%</Text>
         </View>
       </View>
     </View>

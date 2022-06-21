@@ -1,10 +1,6 @@
-import {
-  FlatList,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  SafeAreaView,
-} from "react-native";
+import { FlatList, Text, StyleSheet, SafeAreaView } from "react-native";
+
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 import SearchInput from "../components/SearchInput";
 import Card from "../components/Card";
@@ -32,10 +28,7 @@ export default function HomeScreen() {
         data={filteredCoupons}
         renderItem={({ item }) => {
           return (
-            <TouchableOpacity
-              onPress={() => handleRedeemIt(item)}
-              delayPressIn={100}
-            >
+            <TouchableOpacity onPress={() => handleRedeemIt(item)}>
               <Card item={item} selection={redeemed} />
             </TouchableOpacity>
           );
@@ -48,7 +41,6 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   main: {
     flex: 1,
-    // marginTop: 16,
   },
   title: {
     padding: 12,

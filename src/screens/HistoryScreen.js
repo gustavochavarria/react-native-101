@@ -24,7 +24,6 @@ export default function HistoryScreen() {
 const styles = StyleSheet.create({
   main: {
     flex: 1,
-    marginTop: 16,
   },
   title: {
     padding: 12,
