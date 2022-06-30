@@ -26,6 +26,7 @@ export default function HomeScreen() {
       <FlatList
         style={styles.list}
         data={filteredCoupons}
+        ItemSeparatorComponent={() => <Text></Text>}
         renderItem={({ item }) => {
           return (
             <TouchableOpacity onPress={() => handleRedeemIt(item)}>
